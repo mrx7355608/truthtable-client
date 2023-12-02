@@ -44,7 +44,7 @@ export default function App() {
                 <input type="text" placeholder="Enter expression" name="expression" onChange={handleChange} />
                 <button type="submit">{loading ? "Loading...":"Do it!"}</button>
             </form>
-            {resp && <Table finalAnswersArray={resp.finalAnswersArray} totalInputs={resp.totalInputs} />}
+            {resp && <Table finalAnswersArray={resp}/>}
         </>
 
     )

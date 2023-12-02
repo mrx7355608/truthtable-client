@@ -1,62 +1,23 @@
-export default function Table({ finalAnswersArray, totalInputs }) {
+export default function Table({ finalAnswersArray }) {
+    const { a, b, c, d, answers } = finalAnswersArray;
     return (
-        <table id="output">
+        <table>
+            <tr>
+                {a && <th>A</th>}
+                {b && <th>B</th>}
+                {c && <th>C</th>}
+                {d && <th>D</th>}
+            </tr>
             {
-                totalInputs === 2 ? (
-                    <tr>
-                        <th>A</th><th>B</th><th>X</th>
-                    </tr>
-                ) : totalInputs === 3 ? (
-                    <tr>
-                        <th>A</th><th>B</th><th>C</th><th>X</th>
-                    </tr>
-                ) : totalInputs === 4 ? (
-                    <tr>
-                        <th>A</th><th>B</th><th>C</th><th>D</th><th>X</th>
-                    </tr> 
-                ) : (
-                    <tr>
-                        <th>A</th><th>X</th>
-                    </tr>
-                )
-            }
-            {
-                finalAnswersArray.map((data) => {
-                    if (totalInputs === 1) {
-                        return (
-                            <tr>
-                                <td>{data.a}</td>
-                                <td>{data.answer}</td>
-                            </tr>
-                        )
-                    } else if (totalInputs === 2) {
-                        return (
-                            <tr>
-                                <td>{data.a}</td>
-                                <td>{data.b}</td>
-                                <td>{data.answer}</td>
-                            </tr>
-                        )
-                    } else if (totalInputs === 3) {
-                        return (
-                            <tr>
-                                <td>{data.a}</td>
-                                <td>{data.b}</td>
-                                <td>{data.c}</td>
-                                <td>{data.answer}</td>
-                            </tr>
-                        )
-                    } else if (totalInputs === 4) {
-                        return (
-                            <tr>
-                                <td>{data.a}</td>
-                                <td>{data.b}</td>
-                                <td>{data.c}</td>
-                                <td>{data.d}</td>
-                                <td>{data.answer}</td>
-                            </tr>
-                        )
-                    }
+                a.map((value, index) => {
+                    return (
+                        <tr>
+                            <td>{value}</td>
+                            {b && <td>{b[index]}</td>}
+                            {c && <td>{c[index]}</td>}
+                            {d && <td>{d[index]}</td>}
+                        </tr>
+                    )
                 })
             }
         </table>
