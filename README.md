@@ -1,4 +1,4 @@
-# :sparkles: Truth Table Generator Frontend :sparkles:
+# ✨ Truth Table Generator Frontend ✨
 It is a react based website for my [truthtable-generator](https://www.github.com/mrx7355608/truthtable-generator.git) api.
 
 You can enter your logical expressions and it will give you an output in the form of a table. The output includes all values of A,B,C and D along with the final answers.
