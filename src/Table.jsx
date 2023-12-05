@@ -1,25 +1,62 @@
+import React  from "react";
+
 export default function Table({ finalAnswersArray }) {
-    const { a, b, c, d, answers } = finalAnswersArray;
-    return (
-        <table>
-            <tr>
-                {a && <th>A</th>}
-                {b && <th>B</th>}
-                {c && <th>C</th>}
-                {d && <th>D</th>}
-            </tr>
-            {
-                a.map((value, index) => {
-                    return (
-                        <tr>
-                            <td>{value}</td>
-                            {b && <td>{b[index]}</td>}
-                            {c && <td>{c[index]}</td>}
-                            {d && <td>{d[index]}</td>}
-                        </tr>
-                    )
-                })
+    const respObjectKeys = Object.keys(finalAnswersArray[0]);
+
+    const copyTable = () => {
+        const elTable = document.querySelector('table');
+
+        let range, sel;
+
+        // Ensure that range and selection are supported by the browsers
+        if (document.createRange && window.getSelection) {
+
+            range = document.createRange();
+            sel = window.getSelection();
+            // unselect any element in the page
+            sel.removeAllRanges();
+
+            try {
+                range.selectNodeContents(elTable);
+                sel.addRange(range);
+            } catch (e) {
+                range.selectNode(elTable);
+                sel.addRange(range);
             }
-        </table>
+
+            document.execCommand('copy');
+        }
+
+        sel.removeAllRanges();
+
+        console.log('Element Copied! Paste it in a file')
+    }
+
+    return (
+        <div id="main">
+            <table id="table" border={1}>
+                <tr>
+                    {
+                        respObjectKeys.map((elem) => {
+                            return <th>{elem.toUpperCase()}</th>
+                        })
+                    }
+                </tr>
+                {
+                    finalAnswersArray.map((val, idx) => {
+                        return (
+                            <tr key={idx}>
+                                {
+                                    respObjectKeys.map((key, index) => {
+                                        return <td key={index}>{val[key]}</td>
+                                    })
+                                }
+                            </tr>
+                        )
+                    })
+                }
+            </table>
+            <button id="copy-to-clipboard" onClick={copyTable}>Copy</button>
+        </div>
     )
 }

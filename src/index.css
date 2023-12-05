@@ -10,15 +10,6 @@ h1 {
     margin-top: 3rem;
 }
 
-table#output {
-    table-layout: fixed;
-    border: 1px solid black;
-    width: 100%;
-    margin: 2rem auto;
-    max-width: 500px;
-    text-align: center;
-}
-
 th, td {
     border: 1px solid black;
     padding: 15px;
@@ -62,4 +53,28 @@ div#note {
 ul li {
     margin: 5px 0px;
     color: #1d1d1d;
+}
+
+table {
+    table-layout: fixed;
+    text-align: center;
+    border: 1px solid black;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+button#copy-to-clipboard {
+    padding: 10px;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+div#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+    margin: 2rem auto;
 }
